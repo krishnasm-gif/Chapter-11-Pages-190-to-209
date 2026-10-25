@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 11: Heat - Class 9 Physical Science (SCERT Telangana)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', 'Noto Sans Telugu', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 leading-relaxed">
+
+    <!-- VISITOR TRACKING MODAL -->
+    <div id="visitorModal" class="fixed inset-0 bg-slate-900/80 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 text-center">
+            <h2 class="text-2xl font-bold text-blue-600 mb-2">Heat Study Portal</h2>
+            <p class="text-sm text-slate-600 mb-6">Please enter your Name and Roll Number to begin tracking your study session and timer automatically.</p>
+            <form id="visitorForm" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Full Name / పేరు</label>
+                    <input type="text" id="visitorName" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Roll Number / రోల్ నంబర్</label>
+                    <input type="text" id="visitorRoll" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition">Start Learning / అభ్యాసం ప్రారంభించండి</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FLOATING TIMER & REPORT BAR -->
+    <div class="bg-slate-900 text-white text-xs py-2 px-4 sticky top-0 z-40 flex justify-between items-center shadow-md">
+        <div class="flex items-center space-x-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="sessionTimer">Time Spent: 00:00</span>
+        </div>
+        <button onclick="sendReport()" class="bg-emerald-600 hover:bg-emerald-500 px-3 py-1 rounded text-white font-medium transition">Send Report to Teacher</button>
+    </div>
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white py-12 px-6 text-center shadow-lg">
+        <h1 class="text-3xl md:text-5xl font-bold mb-2">Chapter 11: Heat</h1>
+        <p class="text-blue-200 text-sm md:text-base">Class 9 Physical Science | SCERT Telangana Syllabus (Pages 191 - 209)</p>
+    </header>
+
+    <!-- UPPER INDEX (QUICK NAVIGATION) -->
+    <nav class="bg-white border-b sticky top-9 z-30 shadow-sm overflow-x-auto whitespace-nowrap px-6 py-3 flex space-x-6 text-sm font-medium text-blue-600">
+        <a href="#intro" class="hover:underline">Introduction & Thermal Equilibrium (191-193)</a>
+        <a href="#specific-heat" class="hover:underline">Specific Heat & Mixtures (194-198)</a>
+        <a href="#phase-changes" class="hover:underline">Evaporation, Condensation & Boiling (199-206)</a>
+        <a href="#keypoints" class="hover:underline">40 Key Points</a>
+        <a href="#glossary" class="hover:underline">Glossary (40 Terms)</a>
+        <a href="#exercises" class="hover:underline">Exercises & Q&A</a>
+        <a href="#exp-projects" class="hover:underline">Experiments & Projects</a>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-8 space-y-12">
+
+        <!-- SECTION 1: INTRODUCTION & TEMPERATURE -->
+        <section id="intro" class="bg-white rounded-xl shadow-sm p-6 md:p-8 border border-slate-100">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-1 rounded">Pages 191 - 193</span>
+            <h2 class="text-2xl font-bold text-slate-800 mt-3 mb-4">Introduction, Heat, and Temperature</h2>
+            <div class="space-y-4 text-slate-700">
+                <p><strong>English:</strong> 'Hot' and 'cold' are relative terms. Heat is a form of energy in transit that flows from a body at higher temperature to a body at lower temperature. Temperature is a measure of thermal equilibrium and the degree of hotness or coldness. When two bodies are in thermal contact, heat flows until they attain thermal equilibrium.</p>
+                <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded text-slate-800">
+                    <p class="font-semibold text-amber-900">తెలుగు వివరణ (Telugu Description):</p>
+                    <p class="text-sm mt-1">'వేడి' మరియు 'చల్లదనం' అనేవి సాపేక్ష పదాలు. ఉష్ణం అనేది ఎక్కువ ఉష్ణోగ్రత ఉన్న వస్తువు నుండి తక్కువ ఉష్ణోగ్రత ఉన్న వస్తువుకు ప్రవహించే ఒక శక్తి రూపం. ఉష్ణోగ్రత అనేది ఉష్ణ సమతాస్థితిని కొలిచే ప్రమాణం. రెండు వస్తువులు ఉష్ణ తామ్రంలో ఉన్నప్పుడు ఉష్ణ సమతాస్థితి వచ్చే వరకు ఉష్ణం బదిలీ అవుతుంది.</p>
+                    <p class="text-xs text-amber-700 mt-2"><strong>Example / ఉదాహరణ:</strong> A metal piece feels colder than wood from a fridge because more heat flows out of your hand into the metal. (ఫ్రిజ్ నుండి తీసిన లోహపు ముక్క చెక్క కంటే చల్లగా అనిపిస్తుంది, ఎందుకంటే లోహంలోకి మన శరీరం నుండి ఎక్కువ ఉష్ణం ప్రవహిస్తుంది.)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: SPECIFIC HEAT -->
+        <section id="specific-heat" class="bg-white rounded-xl shadow-sm p-6 md:p-8 border border-slate-100">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-1 rounded">Pages 194 - 198</span>
+            <h2 class="text-2xl font-bold text-slate-800 mt-3 mb-4">Specific Heat Capacity and Method of Mixtures</h2>
+            <div class="space-y-4 text-slate-700">
+                <p><strong>English:</strong> The specific heat of a substance is the amount of heat required to raise the temperature of unit mass of the substance by one unit. It is denoted by 's' with the formula Q = msΔT. Water has a very high specific heat, which helps moderate climates and stabilize Earth's atmospheric temperature. The principle of the method of mixtures states that net heat lost by hot bodies equals net heat gained by cold bodies in thermal contact.</p>
+                <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded text-slate-800">
+                    <p class="font-semibold text-amber-900">తెలుగు వివరణ (Telugu Description):</p>
+                    <p class="text-sm mt-1">ఏదైనా పదార్థం యొక్క ప్రమాణ ద్రవ్యరాశి ఉష్ణోగ్రతను ఒక యూనిట్ పెంచడానికి కావలసిన ఉష్ణరాశిని 'విశిష్టోష్ణం' (Specific heat) అంటారు. సూత్రం: Q = msΔT. నీటికి విశిష్టోష్ణం ఎక్కువ కాబట్టి ఇది భూమిపై ఉష్ణోగ్రతలను క్రమబద్ధీకరించడంలో సహాయపడుతుంది. మిశ్రమాల పద్ధతి ప్రకారం, వేడి వస్తువులు కోల్పోయిన ఉష్ణం చల్లని వస్తువులు గ్రహించిన ఉష్ణానికి సమానం.</p>
+                    <p class="text-xs text-amber-700 mt-2"><strong>Example / ఉదాహరణ:</strong> Oceans act as heat storehouses because water absorbs large amounts of heat without a drastic temperature rise. (సముద్రాలు ఉష్ణ నిల్వ కేంద్రాలుగా పనిచేస్తాయి, ఎందుకంటే నీరు ఎక్కువ ఉష్ణాన్ని గ్రహించగలదు.)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PHASE CHANGES -->
+        <section id="phase-changes" class="bg-white rounded-xl shadow-sm p-6 md:p-8 border border-slate-100">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-1 rounded">Pages 199 - 206</span>
+            <h2 class="text-2xl font-bold text-slate-800 mt-3 mb-4">Evaporation, Condensation, Boiling, and Melting</h2>
+            <div class="space-y-4 text-slate-700">
+                <p><strong>English:</strong> Evaporation is the escaping of molecules from the surface of a liquid at any temperature, causing a cooling effect. Condensation is the phase change from gas to liquid, which is a warming process. Boiling occurs at a definite constant temperature called the boiling point, using latent heat of vaporization. Melting and freezing involve latent heat of fusion.</p>
+                <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded text-slate-800">
+                    <p class="font-semibold text-amber-900">తెలుగు వివరణ (Telugu Description):</p>
+                    <p class="text-sm mt-1">ఏ ఉష్ణోగ్రత వద్దనైనా ద్రవ ఉపరితలం నుండి అణువులు ఆవిరిగా మారు ప్రక్రియను బాష్పీభవనం (Evaporation) అంటారు, ఇది చల్లబరిచే ప్రక్రియ. ద్రవీభవనం (Condensation) అనేది వాయువు నుండి ద్రవంగా మారే ప్రక్రియ, ఇది వేడిని పుట్టించేది. మరుగు స్థానం వద్ద ఉష్ణోగ్రత స్థిరంగా ఉంటూ గుప్తోష్ణం (Latent heat) ఉపయోగపడుతుంది.</p>
+                    <p class="text-xs text-amber-700 mt-2"><strong>Example / ఉదాహరణ:</strong> Sweating cools our body through the evaporation of sweat from the skin. (చెమట ఆవిరి కావడం వల్ల మన శరీరం చల్లబడుతుంది.)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 40 KEY POINTS -->
+        <section id="keypoints" class="bg-white rounded-xl shadow-sm p-6 md:p-8 border border-slate-100">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">40 Key Points (40 ముఖ్యాంశాలు)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
+                <div class="bg-slate-50 p-3 rounded border">1. Heat is a form of energy in transit flowing from higher to lower temperature. (ఉష్ణం అనేది ఎక్కువ నుండి తక్కువ ఉష్ణోగ్రతకు ప్రవహించే శక్తి రూపం.)</div>
+                <div class="bg-slate-50 p-3 rounded border">2. Temperature measures thermal equilibrium and degree of hotness. (ఉష్ణోగ్రత అనేది ఉష్ణ సమతాస్థితిని కొలిచేది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">3. SI unit of heat is Joule (J) and CGS unit is calorie. (ఉష్ణపు SI ప్రమాణం జౌల్, CGS ప్రమాణం కాలరీ.)</div>
+                <div class="bg-slate-50 p-3 rounded border">4. 1 calorie equals 4.186 Joules. (1 కాలరీ = 4.186 జౌల్స్.)</div>
+                <div class="bg-slate-50 p-3 rounded border">5. SI unit of temperature is Kelvin (K). (ఉష్ణోగ్రత SI ప్రమాణం కెల్విన్.)</div>
+                <div class="bg-slate-50 p-3 rounded border">6. Temperature in Kelvin equals 273 plus Celsius temperature. (కెల్విన్ ఉష్ణోగ్రత = 273 + సెల్సియస్ ఉష్ణోగ్రత.)</div>
+                <div class="bg-slate-50 p-3 rounded border">7. Absolute temperature is measured on the Kelvin scale. (పరమ ఉష్ణోగ్రతను కెల్విన్ Scale పై కొలుస్తారు.)</div>
+                <div class="bg-slate-50 p-3 rounded border">8. Average kinetic energy of molecules is proportional to absolute temperature. (అణువుల సగటు గతి శక్తి పరమ ఉష్ణోగ్రతకు అనులోమానుపాతంలో ఉంటుంది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">9. Specific heat capacity formula is Q = msΔT. (విశిష్టోష్ణ సూత్రం Q = msΔT.)</div>
+                <div class="bg-slate-50 p-3 rounded border">10. Specific heat units are J/kg-K or cal/g-°C. (విశిష్టోష్ణ ప్రమాణాలు J/kg-K లేదా cal/g-°C.)</div>
+                <div class="bg-slate-50 p-3 rounded border">11. Water has a very high specific heat capacity. (నీటికి విశిష్టోష్ణం చాలా ఎక్కువ.)</div>
+                <div class="bg-slate-50 p-3 rounded border">12. Oceans act as huge heat storehouses for the Earth. (సముద్రాలు భూమికి ఉష్ణ నిల్వ కేంద్రాలుగా పనిచేస్తాయి.)</div>
+                <div class="bg-slate-50 p-3 rounded border">13. Principle of mixtures states heat lost equals heat gained. (మిశ్రమాల సూత్రం ప్రకారం కోల్పోయిన ఉష్ణం గ్రహించిన ఉష్ణానికి సమానం.)</div>
+                <div class="bg-slate-50 p-3 rounded border">14. Evaporation is a surface phenomenon occurring at any temperature. (బాష్పీభవనం అనేది ఏ ఉష్ణోగ్రత వద్దనైనా జరిగే ఉపరితల దృగ్విషయం.)</div>
+                <div class="bg-slate-50 p-3 rounded border">15. Evaporation causes cooling in the surroundings. (బాష్పీభవనం చల్లదనాన్ని కలుగజేస్తుంది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">16. Evaporation increases with surface area and wind speed. (ఉపరితల వైశాల్యం, గాలి వేగం పెరిగితే బాష్పీభవనం పెరుగుతుంది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">17. High humidity decreases the rate of evaporation. (తేమ ఎక్కువగా ఉంటే బాష్పీభవన వేగం తగ్గుతుంది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">18. Condensation is the phase change from gas to liquid. (ఘనీభవనం అనేది వాయువు నుండి ద్రవంగా మారడం.)</div>
+                <div class="bg-slate-50 p-3 rounded border">19. Condensation is a warming process. (ఘనీభవనం అనేది వేడిని విడుదల చేసే ప్రక్రియ.)</div>
+                <div class="bg-slate-50 p-3 rounded border">20. Dew forms when water vapour condenses on cold surfaces. (చల్లని ఉపరితలాలపై నీటి ఆవిరి గడ్డకట్టి మంచు బిందువులవుతుంది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">21. Fog is formed when water vapour condenses on air dust particles. (గాలిలోని ధూళి కణాలపై ఆవిరి సాంద్రీకరణం చెంది పొగమంచు ఏర్పడుతుంది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">22. Boiling occurs at a constant temperature called boiling point. (మరుగు స్థానం వద్ద ద్రవం మరుగుతుంది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">23. Boiling point of water at normal pressure is 100°C. (సాధారణ పీడనం వద్ద నీటి మరుగు స్థానం 100°C.)</div>
+                <div class="bg-slate-50 p-3 rounded border">24. Latent heat of vaporization is heat required to change liquid to gas. (బాష్పీభవన గుప్తోష్ణం అనగా ద్రవాన్ని ఆవిరిగా మార్చడానికి కావలసిన ఉష్ణం.)</div>
+                <div class="bg-slate-50 p-3 rounded border">25. Latent heat of vaporization of water is 540 cal/g. (నీటి బాష్పీభవన గుప్తోష్ణం 540 cal/g.)</div>
+                <div class="bg-slate-50 p-3 rounded border">26. Melting is the conversion of solid to liquid at melting point. (ద్రవీభవనం అనగా ఘనరూపం ద్రవ రూపంలోకి మారడం.)</div>
+                <div class="bg-slate-50 p-3 rounded border">27. Melting point of ice is 0°C (273K). (మంచు ద్రవీభవన స్థానం 0°C.)</div>
+                <div class="bg-slate-50 p-3 rounded border">28. Latent heat of fusion of ice is 80 cal/g. (మంచు ద్రవీభవన గుప్తోష్ణం 80 cal/g.)</div>
+                <div class="bg-slate-50 p-3 rounded border">29. Water expands on freezing, making ice less dense than water. (నీరు గడ్డకట్టేటప్పుడు వ్యాకోచిస్తుంది, కాబట్టి మంచు సాంద్రత తక్కువ.)</div>
+                <div class="bg-slate-50 p-3 rounded border">30. Ice floats on water due to its lower density. (తక్కువ సాంద్రత వల్ల మంచు నీటిపై తేలుతుంది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">31. Aquatic life survives under frozen ponds because ice floats and insulates. (మంచు తేలడం వల్ల నీటి క్రింద జీవులు బ్రతుకగలుగుతాయి.)</div>
+                <div class="bg-slate-50 p-3 rounded border">32. Freezing is the conversion of liquid phase to solid phase. (ఘనీభవనం అనగా ద్రవ రూపం ఘన రూపంలోకి మారడం.)</div>
+                <div class="bg-slate-50 p-3 rounded border">33. Thermal equilibrium is when two bodies stop exchanging heat. (రెండు వస్తువుల మధ్య ఉష్ణ మార్పిడి ఆగిపోవడాన్ని ఉష్ణ సమతాస్థితి అంటారు.)</div>
+                <div class="bg-slate-50 p-3 rounded border">34. Internal energy includes kinetic and potential energies of molecules. (అంతర్గత శక్తిలో అణువుల గతి మరియు స్థితి శక్తులు ఉంటాయి.)</div>
+                <div class="bg-slate-50 p-3 rounded border">35. Water melon retains coolness longer due to high water content. (పుచ్చకాయలో నీరు ఎక్కువగా ఉండటం వల్ల ఎక్కువ సేపు చల్లగా ఉంటుంది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">36. Samosa curry stays hot longer because ingredients have high specific heat. (సమోసా లోపలి కూర విశిష్టోష్ణం ఎక్కువ కాబట్టి వేడిగా ఉంటుంది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">37. Humidity refers to the amount of water vapour present in air. (గాలిలో ఉండే నీటి ఆవిరి శాతాన్ని తేమ అంటారు.)</div>
+                <div class="bg-slate-50 p-3 rounded border">38. Temperature does not change during phase changes like melting or boiling. (స్థితి మార్పు సమయంలో ఉష్ణోగ్రత స్థిరంగా ఉంటుంది.)</div>
+                <div class="bg-slate-50 p-3 rounded border">39. Calorimeter is a device used to measure heat exchanges. (ఉష్ణ మార్పిడిని కొలవడానికి క్యాలరీమీటర్ వాడతారు.)</div>
+                <div class="bg-slate-50 p-3 rounded border">40. Glass bottles break when water inside freezes due to volume expansion. (నీరు గడ్డకట్టేటప్పుడు వ్యాకోచించడం వల్ల గాజు సీసాలు పగులుతాయి.)</div>
+            </div>
+        </section>
+
+        <!-- 40 GLOSSARY TERMS -->
+        <section id="glossary" class="bg-white rounded-xl shadow-sm p-6 md:p-8 border border-slate-100">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Glossary Vocabulary (40 పదకోశ పదాలు)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div class="p-3 bg-slate-50 rounded border"><strong>1. Heat (ఉష్ణం):</strong> Energy in transit due to temperature difference.<br><em>Ex: Heat flows from hot to cold bodies. (ఉష్ణం వేడి వస్తువు నుండి చల్లని వస్తువుకు ప్రవహిస్తుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>2. Temperature (ఉష్ణోగ్రత):</strong> Degree of hotness or coldness.<br><em>Ex: Temperature measures thermal equilibrium. (ఉష్ణోగ్రత ఉష్ణ సమతాస్థితిని కొలుస్తుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>3. Thermal Equilibrium (ఉష్ణ సమతాస్థితి):</strong> State with no net heat transfer.<br><em>Ex: Both bodies reached thermal equilibrium. (రెండు వస్తువులు ఉష్ణ సమతాస్థితిని చేరాయి.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>4. Specific Heat (విశిష్టోష్ణము):</strong> Heat required per unit mass per unit degree rise.<br><em>Ex: Water has high specific heat. (నీటికి విశిష్టోష్ణం ఎక్కువ.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>5. Evaporation (బాష్పీభవనము):</strong> Liquid to gas phase change at surface.<br><em>Ex: Wet clothes dry by evaporation. (తడి బట్టలు బాష్పీభవనం ద్వారా ఆరిపోతాయి.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>6. Condensation (ఘనీభవనము / ద్రవీభవనము):</strong> Gas to liquid phase change.<br><em>Ex: Water vapour undergoes condensation. (నీటి ఆవిరి ఘనీభవిస్తుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>7. Boiling (మరుగుట):</strong> Rapid vaporization throughout liquid at boiling point.<br><em>Ex: Water starts boiling at 100°C. (నీరు 100°C వద్ద మరుగుతుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>8. Melting (కరుగుట):</strong> Solid to liquid phase change.<br><em>Ex: Ice undergoes melting at 0°C. (మంచు 0°C వద్ద కరుగుతుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>9. Freezing (గడ్డకట్టుట):</strong> Liquid to solid phase change.<br><em>Ex: Water turns to ice by freezing. (నీరు గడ్డకట్టడం ద్వారా మంచుగా మారుతుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>10. Humidity (తేమ):</strong> Amount of water vapour in air.<br><em>Ex: Humidity is high in rainy season. (వర్షాకాలంలో తేమ ఎక్కువగా ఉంటుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>11. Dew (మంచు బిందువులు):</strong> Water droplets condensed on cold objects.<br><em>Ex: Grass is covered with dew in winter. (శీతాకాలంలో గడ్డిపై మంచు బిందువులుంటాయి.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>12. Fog (పొగమంచు):</strong> Floating water droplets reducing visibility.<br><em>Ex: Fog causes poor visibility in winter morning. (శీతాకాల ఉదయం పొగమంచు వల్ల చూపు మందగిస్తుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>13. Latent Heat of Fusion (ద్రవీభవన గుప్తోష్ణం):</strong> Heat to melt solid to liquid.<br><em>Ex: Ice has specific latent heat of fusion. (మంచుకు ద్రవీభవన గుప్తోష్ణం ఉంటుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>14. Latent Heat of Vaporization (బాష్పీభవన గుప్తోష్ణం):</strong> Heat to turn liquid to gas.<br><em>Ex: Steam carries latent heat of vaporization. (నీటి ఆవిరిలో బాష్పీభవన గుప్తోష్ణం ఉంటుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>15. Calorimeter (క్యాలరీమీటర్):</strong> Device to measure heat quantities.<br><em>Ex: Calorimeter finds specific heat of solids. (క్యాలరీమీటర్ తో ఘన పదార్థాల విశిష్టోష్ణం కనుగొంటారు.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>16. Kelvin Scale (కెల్విన్ స్కేల్):</strong> Absolute temperature scale.<br><em>Ex: SI unit of temperature is Kelvin scale. (ఉష్ణోగ్రత SI ప్రమాణం కెల్విన్ స్కేల్.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>17. Calorie (కాలరీ):</strong> CGS unit of heat energy.<br><em>Ex: Heat can be measured in calories. (ఉష్ణాన్ని కాలరీలలో కొలవవచ్చు.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>18. Joule (జౌల్):</strong> SI unit of heat energy.<br><em>Ex: Heat is expressed in joules. (ఉష్ణాన్ని జౌల్స్‌లో వ్యక్తపరుస్తారు.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>19. Internal Energy (అంతర్గత శక్తి):</strong> Sum of molecular kinetic and potential energies.<br><em>Ex: Heating increases internal energy. (వేడి చేయడం వల్ల అంతర్గత శక్తి పెరుగుతుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>20. Thermal Contact (ఉష్ణ తామ్రము):</strong> Contact allowing heat exchange.<br><em>Ex: Bodies in thermal contact exchange heat. (ఉష్ణ తామ్రంలో ఉన్న వస్తువులు ఉష్ణాన్ని మార్చుకుంటాయి.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>21. Melting Point (ద్రవీభవన స్థానం):</strong> Constant temperature of solid melting.<br><em>Ex: Ice melting point is 0°C. (మంచు ద్రవీభవన స్థానం 0°C.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>22. Boiling Point (మరుగు స్థానం):</strong> Constant temperature of liquid boiling.<br><em>Ex: Water boiling point is 100°C. (నీటి మరుగు స్థానం 100°C.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>23. Expansion (వ్యాకోచము):</strong> Increase in volume.<br><em>Ex: Water shows expansion on freezing. (నీరు గడ్డకట్టేటప్పుడు వ్యాకోచిస్తుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>24. Thermometer (థర్మామీటర్):</strong> Device measuring temperature.<br><em>Ex: Thermometers use mercury. (థర్మామీటర్‌లో పాదరసం వాడతారు.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>25. Mercury (పాదరసము):</strong> Liquid metal used in thermometers.<br><em>Ex: Mercury level rises with heat. (ఉష్ణానికి పాదరస మట్టం పెరుగుతుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>26. Phase Change (స్థితి మార్పు):</strong> Transition between solid, liquid, gas.<br><em>Ex: Melting is a phase change. (కరుగుట అనేది స్థితి మార్పు.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>27. Petri Dish (పెట్రి డిష్):</strong> Shallow glass dish for laboratory use.<br><em>Ex: Spirit is kept in a petri dish. (పెట్రి డిష్‌లో స్పిరిట్ ఉంచారు.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>28. Convection (ఉష్ణ ప్రసరణ):</strong> Heat transfer through fluid motion.<br><em>Ex: Convection currents form in liquids. (ద్రవాలలో ఉష్ణ ప్రసరణ జరుగుతుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>29. Conduction (ఉష్ణ వాహకత):</strong> Heat transfer through direct contact.<br><em>Ex: Metals are good heat conductors. (లోహాలు మంచి ఉష్ణ వాహకాలు.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>30. Radiation (ఉష్ణ వికిరణము):</strong> Heat transfer via electromagnetic waves.<br><em>Ex: Sun heat reaches earth by radiation. (సూర్యుని ఉష్ణం వికిరణం ద్వారా చేరుతుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>31. Absolute Temperature (పరమ ఉష్ణోగ్రత):</strong> Temperature measured in Kelvin.<br><em>Ex: Absolute temperature starts at 0K. (పరమ ఉష్ణోగ్రత 0K నుండి మొదలవుతుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>32. Mixture (మిశ్రమము):</strong> Combination of substances.<br><em>Ex: Water samples form a mixture. (నీటి నమూనాలు మిశ్రమాన్ని ఏర్పరుస్తాయి.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>33. Insulator (బంధకము):</strong> Poor conductor of heat.<br><em>Ex: Ice acts as an insulator on ponds. (మంచు చెరువులపై బంధకంగా పనిచేస్తుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>34. Vaporisation (బాష్పీభవనము / ఆవిరిగా మారుట):</strong> Liquid turning to vapour.<br><em>Ex: Vaporisation requires latent heat. (ఆవిరి కావడానికి గుప్తోష్ణం కావాలి.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>35. Cooling Process (చల్లబరిచే ప్రక్రియ):</strong> Process lowering temperature.<br><em>Ex: Evaporation is a cooling process. (బాష్పీభవనం ఒక చల్లబరిచే ప్రక్రియ.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>36. Warming Process (వేడి చేసే ప్రక్రియ):</strong> Process raising temperature.<br><em>Ex: Condensation is a warming process. (ఘనీభవనం వేడి చేసే ప్రక్రియ.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>37. Relative Term (సాపేక్ష పదం):</strong> Term dependent on comparison.<br><em>Ex: Hot and cold are relative terms. (వేడి, చలులు సాపేక్ష పదాలు.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>38. Molecular Motion (అణువుల చలనం):</strong> Random movement of molecules.<br><em>Ex: Molecular motion increases with heat. (ఉష్ణానికి అణువుల చలనం పెరుగుతుంది.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>39. Climate Moderation (వాతావరణ క్రమబద్ధీకరణ):</strong> Stabilizing weather conditions.<br><em>Ex: Oceans provide climate moderation. (సముద్రాలు వాతావరణాన్ని క్రమబద్ధీకరిస్తాయి.)</em></div>
+                <div class="p-3 bg-slate-50 rounded border"><strong>40. Anisotropic Behaviour (అసాధారణ ప్రవర్తన):</strong> Unusual property like water expansion.<br><em>Ex: Water shows anomalous expansion below 4°C. (నీరు 4°C దిగువన అసాధారణ వ్యాకోచం చూపుతుంది.)</em></div>
+            </div>
+        </section>
+
+        <!-- EXERCISES & Q&A SECTION -->
+        <section id="exercises" class="bg-white rounded-xl shadow-sm p-6 md:p-8 border border-slate-100 space-y-8">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">Textbook Exercises & Q&A (అభ్యాసాలు మరియు ప్రశ్న-జవాబులు)</h2>
+
+            <!-- Reflections on Concepts -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-blue-700 border-b pb-2">I. Reflections on Concepts (అవగాహన - ప్రతిబింబాలు)</h3>
+                
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">1. Why do we get dew on the surface of a cold soft drink bottle kept in open air? (AS1)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> బహిరంగ గాలిలో ఉంచిన చల్లని శీతల పానీయాల సీసా ఉపరితలంపై మంచు బిందువులు ఎందుకు ఏర్పడతాయి?</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Answer:</strong> When warm air surrounding the bottle comes in contact with the cold surface of the bottle, the water vapour in the air loses kinetic energy and undergoes condensation into tiny water droplets (dew).<br><strong>తెలుగు వివరణ:</strong> సీసా చుట్టూ ఉన్న గాలి సీసా యొక్క చల్లని ఉపరితలాన్ని తాకినప్పుడు, గాలిలోని నీటి ఆవిరి ఉష్ణాన్ని కోల్పోయి సాంద్రీకరణం చెంది చిన్న నీటి బిందువులుగా (మంచు బిందువులు) మారుతుంది.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">2. Your friend is asked to differentiate between evaporation and boiling. What questions could you ask to make him know the differences between evaporation and boiling? (AS2)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> బాష్పీభవనం మరియు మరుగుట మధ్య తేడాను తెలుసుకోవడానికి మీ స్నేహితుడిని ఏ ప్రశ్నలు అడుగుతారు?</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Answer:</strong> Questions: (i) Does evaporation happen at all temperatures while boiling happens only at a fixed point? (ii) Is evaporation a surface phenomenon while boiling takes place throughout the liquid?<br><strong>తెలుగు వివరణ:</strong> ప్రశ్నలు: (i) బాష్పీభవనం ఏ ఉష్ణోగ్రతనైనా జరుగుతుందా, మరుగుట ఒకే నిర్దిష్ట ఉష్ణోగ్రత వద్ద జరుగుతుందా? (ii) బాష్పీభవనం ఉపరితలంపై జరుగుతుందా లేదా ద్రవమంతటా జరుగుతుందా?</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">3. Water can evaporate at any temperature. Explain with an example? (AS3)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> నీరు ఏ ఉష్ణోగ్రత వద్దనైనా బాష్పీభవనం చెందుతుంది. ఉదాహరణతో వివరించండి.</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Answer:</strong> Wet clothes dry even on cold or cloudy winter days at temperatures well below 100°C because surface molecules continuously escape into the air.<br><strong>తెలుగు వివరణ:</strong> చలికాలంలో లేదా మేఘావృతమైన రోజులలో కూడా తడి బట్టలు 100°C కంటే తక్కువ ఉష్ణోగ్రత వద్ద ఆరిపోతాయి, ఎందుకంటే ఉపరితల అణువులు నిరంతరం ఆవిరి అవుతాయి.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">4. What role does specific heat play in keeping a watermelon cool for a long time after removing it from a fridge on a hot day? (AS7)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> వేసవి రోజున ఫ్రిజ్ నుండి తీసిన పుచ్చకాయ ఎక్కువ సేపు చల్లగా ఉండటానికి విశిష్టోష్ణం ఎలా సహాయపడుతుంది?</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Answer:</strong> Watermelon contains a very high percentage of water. Since water has a very high specific heat capacity, it absorbs a large amount of heat from the surroundings before its temperature rises significantly.<br><strong>తెలుగు వివరణ:</strong> పుచ్చకాయలో నీటి శాతం చాలా ఎక్కువ. నీటికి విశిష్టోష్ణం ఎక్కువ కాబట్టి, ఇది చుట్టూ ఉన్న వాతావరణం నుండి ఎక్కువ ఉష్ణాన్ని పీల్చుకున్నప్పటికీ దాని ఉష్ణోగ్రత మెల్లగా మారుతుంది.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">5. Equal amounts of water are kept in a cap and in a dish. Which will evaporate faster? Why? (AS3)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> సమాన పరిమాణంలో నీటిని ఒక మూతలో మరియు ఒక పళ్లెంలో ఉంచితే ఏది వేగంగా బాష్పీభవనం చెందుతుంది? ఎందుకు?</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Answer:</strong> Water in the dish will evaporate faster because a dish has a larger surface area exposed to air, and evaporation is a surface phenomenon.<br><strong>తెలుగు వివరణ:</strong> పళ్లెంలో ఉన్న నీరు వేగంగా ఆవిరవుతుంది, ఎందుకంటే పళ్లెంలో ఉపరితల వైశాల్యం ఎక్కువ, బాష్పీభవనం ఉపరితలంపై మాత్రమే జరుగుతుంది.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">6. Why is specific heat different for different substances? Explain. (AS1)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> వేర్వేరు పదార్థాలకు విశిష్టోష్ణం వేర్వేరుగా ఎందుకు ఉంటుంది? వివరించండి.</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Answer:</strong> When heat is supplied, molecules share it among different forms of energy (linear kinetic, rotational, vibrational, potential). The share utilized for increasing linear kinetic energy (temperature rise) varies by substance.<br><strong>తెలుగు వివరణ:</strong> ఉష్ణాన్ని అందించినప్పుడు అణువులు వివిధ శక్తుల రూపాలలో (గతి, భ్రమణ, స్థితి శక్తులు) పంచుకుంటాయి. గతి శక్తి పెరగడానికి ఉపయోగపడే భాగం పదార్థాన్ని బట్టి మారుతుంది.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">7. If you are chilly outside the shower stall, why do you feel warm after the bath if you stay in the bathroom? (AS7)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> బాత్ రూమ్ బయట చలిగా ఉన్నప్పటికీ, స్నానం తర్వాత బాత్ రూమ్‌లోనే ఉంటే ఎందుకు వెచ్చగా అనిపిస్తుంది?</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Answer:</strong> The bathroom air is humid with water vapour. When these vapour molecules condense on your skin, they release latent heat of vaporization, making you feel warm.<br><strong>తెలుగు వివరణ:</strong> బాత్ రూమ్‌లో నీటి ఆవిరి (తేమ) ఎక్కువగా ఉంటుంది. ఆ ఆవిరి అణువులు మీ చర్మంపై ఘనీభవించినప్పుడు గుప్తోష్ణాన్ని విడుదల చేస్తాయి, దీనివల్ల వెచ్చగా అనిపిస్తుంది.</p>
+                </div>
+            </div>
+
+            <!-- Application of Concepts -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-blue-700 border-b pb-2">II. Application of Concepts (అవుసరాల అన్వయం)</h3>
+                
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">1. Using the concept of evaporation, explain why dogs pant during hot summer days? (AS1)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> బాష్పీభవన భావనను ఉపయోగించి, వేసవిలో కుక్కలు ఎందుకు వేగంగా గాలిపీల్చుకుంటూ నోరు తెరుస్తాయో వివరించండి.</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Answer:</strong> Dogs do not sweat all over their body. They pant to pass air over moist surfaces of their tongue and respiratory tract, causing rapid evaporation that cools their body.<br><strong>తెలుగు వివరణ:</strong> కుక్కలకు శరీరంపై చెమట గ్రంథులు ఉండవు. అవి నోరు తెరిచి గాలిని పీల్చడం ద్వారా నాలుకపై ఉన్న తడి ఆవిరై (బాష్పీభవనం చెంది) శరీరం చల్లబడుతుంది.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">2. If 50g of water at 20°C and 50g of water at 40°C are mixed, what is the final temperature of the mixture? (AS1)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> 20°C వద్ద ఉన్న 50 గ్రాముల నీరు మరియు 40°C వద్ద ఉన్న 50 గ్రాముల నీటిని కలిపితే మిశ్రమం తుది ఉష్ణోగ్రత ఎంత?</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Solution:</strong> Using mixture principle (m₁(T₁ - T) = m₂(T - T₂)) with m₁ = m₂ = 50 g, T₁ = 40°C, T₂ = 20°C. T = (20 + 40) / 2 = 30°C.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">3. What do you observe in the surroundings in terms of cooling or heating when water vapour is getting condensed? (AS1)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> నీటి ఆవిరి సాంద్రీకరణం (ఘనీభవనం) చెందేటప్పుడు పరిసరాలలో ఉష్ణం లేదా చల్లదనం పరంగా ఏమి గమనిస్తారు?</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Answer:</strong> Condensation is a warming process, so it releases heat into the surrounding atmosphere, causing a slight warming effect.<br><strong>తెలుగు వివరణ:</strong> సాంద్రీకరణం అనేది ఉష్ణాన్ని విడుదల చేసే ప్రక్రియ కాబట్టి, ఇది పరిసరాలలో ఉష్ణాన్ని వెలువరిస్తుంది, తద్వారా పరిసరాలు వేడెక్కుతాయి.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">4. Convert the following into Kelvin scale: (i) 20°C, (ii) 27°C, (iii) -273°C. (AS1)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> క్రింది వాటిని కెల్విన్ స్కేల్‌లోకి మార్చండి: (i) 20°C, (ii) 27°C, (iii) -273°C.</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Solution:</strong> Formula: K = 273 + T.<br>(i) 20°C = 273 + 20 = 293 K.<br>(ii) 27°C = 273 + 27 = 300 K.<br>(iii) -273°C = 273 - 273 = 0 K.</p>
+                </div>
+            </div>
+
+            <!-- Higher Order Thinking Questions -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-blue-700 border-b pb-2">III. Higher Order Thinking Questions (ఉన్నత స్థాయి ఆలోచనా ప్రశ్నలు)</h3>
+                
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">1. How do you appreciate the role of the higher specific heat of water in stabilizing atmospheric temperature during winter and summer seasons? (AS6)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> శీతాకాలం మరియు వేసవికాలంలో వాతావరణ ఉష్ణోగ్రతను స్థిరీకరించడంలో నీటి అధిక విశిష్టోష్ణం పాత్రను ఎలా అభినందిస్తారు?</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Answer:</strong> Water's high specific heat allows oceans and water bodies to absorb huge amounts of heat without drastic temperature spikes in summer, and release stored heat slowly in winter, stabilizing global climate.<br><strong>తెలుగు వివరణ:</strong> నీటి విశిష్టోష్ణం ఎక్కువ కాబట్టి వేసవిలో సముద్రాలు ఎక్కువ ఉష్ణాన్ని పీల్చుకుని చల్లగా ఉంటాయి, శీతాకాలంలో ఆ ఉష్ణాన్ని మెల్లగా విడుదల చేసి వాతావరణాన్ని సమతుల్యంగా ఉంచుతాయి.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">2. Answer these energy transfer questions: (a) 1 g boiling water at 100°C condenses to water at 100°C? (b) 1 g boiling water at 100°C cools to 0°C? (c) 1 g water at 0°C freezes to ice at 0°C? (d) 1 g steam at 100°C cools to ice at 0°C? (AS1)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> ఉష్ణ బదిలీ లెక్కలు: (a) 100°C నీరు ఆవిరి కావడానికి/ఘనీభవించడానికి... మొదలగు లెక్కలు.</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Solution:</strong><br>(a) Energy released = 540 cal (latent heat of vaporization).<br>(b) Energy released = 100 cal (msΔT = 1 × 1 × 100).<br>(c) Energy released = 80 cal (latent heat of fusion).<br>(d) Total energy released = 540 + 100 + 80 = 720 cal.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">3. Suppose that 1 L of water is heated for a certain time to rise its temperature by 2°C. If 2 L of water is heated for the same time, how much would its temperature rise? (AS7)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> 1 లీటర్ నీటిని కొంత సమయం వేడి చేస్తే ఉష్ణోగ్రత 2°C పెరిగింది. అదే సమయంలో 2 లీటర్ల నీటిని వేడి చేస్తే ఉష్ణోగ్రత ఎంత పెరుగుతుంది?</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Answer:</strong> Since mass is doubled, for the same heat supplied, the temperature rise will be halved, i.e., 1°C.<br><strong>తెలుగు వివరణ:</strong> ద్రవ్యరాశి రెట్టింపు అయింది కాబట్టి, అదే ఉష్ణరాశికి ఉష్ణోగ్రత పెరుగుదల సగానికి (1°C) పడిపోతుంది.</p>
+                </div>
+            </div>
+
+            <!-- Multiple Choice Questions -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-blue-700 border-b pb-2">IV. Multiple Choice Questions (బహుళైచ్ఛిక ప్రశ్నలు)</h3>
+                
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2 text-sm">
+                    <p><strong>1. Which of the following is a warming process:</strong> [ b ]<br>a) Evaporation &nbsp; b) Condensation &nbsp; c) Boiling &nbsp; d) All the above</p>
+                    <p><strong>2. Melting is a process in which solid phase changes to:</strong> [ b ]<br>a) Liquid phase &nbsp; b) Liquid phase at constant temperature &nbsp; c) Gaseous phase &nbsp; d) Gaseous phase at constant temperature</p>
+                    <p><strong>3. Three bodies A, B and C are in thermal equilibrium. The temperature of B is 45°C, then the temperature of C is:</strong> [ a ]<br>a) 45°C &nbsp; b) 50°C &nbsp; c) 40°C &nbsp; d) Any temperature</p>
+                    <p><strong>4. The temperature of a steel rod is 330K. Its temperature in °C is:</strong> [ a ]<br>a) 57°C &nbsp; b) 55°C &nbsp; c) 59°C &nbsp; d) 53°C (330 - 273 = 57)</p>
+                    <p><strong>5. Specific heat S =</strong> [ c ]<br>a) Q/ΔT &nbsp; b) QΔT &nbsp; c) Q/mΔT &nbsp; d) mΔT/Q</p>
+                    <p><strong>6. Boiling point of water at normal atmospheric pressure is:</strong> [ b ]<br>a) 0°C &nbsp; b) 100°C &nbsp; c) 110°C &nbsp; d) -5°C</p>
+                    <p><strong>7. When ice melts, its temperature:</strong> [ a ]<br>a) Remains constant &nbsp; b) Increases &nbsp; c) Decreases &nbsp; d) First decrease and then increase</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUGGESTED EXPERIMENTS & PROJECTS SECTION -->
+        <section id="exp-projects" class="bg-white rounded-xl shadow-sm p-6 md:p-8 border border-slate-100 space-y-8">
+            <h2 class="text-2xl font-bold text-slate-800 mb-4">Suggested Experiments & Projects (సూచించిన ప్రయోగాలు మరియు ప్రాజెక్టులు)</h2>
+
+            <!-- Suggested Experiments -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-blue-700 border-b pb-2">Suggested Experiments (సూచించిన ప్రయోగాలు)</h3>
+                
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">1. Find the specific heat of solids experimentally and write a report. (AS3)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> ప్రయోగపూర్వకంగా ఘన పదార్థాల విశిష్టోష్ణాన్ని కనుగొని నివేదిక రాయండి.</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Procedure:</strong> Use a calorimeter, water, stirrer, and hot solid (lead shots). Heat solid in steam heater, transfer to calorimeter containing water, record initial and final equilibrium temperatures, and apply mixture principles.<br><strong>తెలుగు వివరణ:</strong> క్యాలరీమీటర్, నీరు మరియు వేడి చేసిన సీసం గుళ్ళను ఉపయోగించి మిశ్రమాల పద్ధతి ద్వారా విశిష్టోష్ణాన్ని నిర్ధారించాలి.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">2. Perform an experiment to prove that the rate of evaporation depends on surface area and surrounding vapour. (AS3)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> బాష్పీభవన వేగం ఉపరితల వైశాల్యం మరియు గాలిలోని ఆవిరిపై ఆధారపడుతుందని నిరూపించండి.</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Procedure:</strong> Take equal water in a test tube and china dish under same conditions. Notice that water in china dish (larger surface area) evaporates faster.<br><strong>తెలుగు వివరణ:</strong> పరీక్ష నాళిక మరియు చైనా డిష్‌లలో సమాన నీరు తీసుకొని పరిశీలించగా, వైశాల్యం ఎక్కువ ఉన్న చైనా డిష్‌లో బాష్పీభవనం వేగంగా జరుగుతుంది.</p>
+                </div>
+            </div>
+
+            <!-- Suggested Projects -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-semibold text-blue-700 border-b pb-2">Suggested Projects (సూచించిన ప్రాజెక్టులు)</h3>
+                
+                <div class="p-4 bg-slate-50 rounded-lg border space-y-2">
+                    <p class="font-bold text-slate-900">1. Take 2kg of ice at -5°C. Supply heat continuously till it boils. Note temperature every minute. Draw a temperature-time graph and write conclusions. (AS4)</p>
+                    <p class="text-sm text-slate-600"><strong>తెలుగు:</strong> -5°C వద్ద ఉన్న 2 కేజీల మంచును మరిగే వరకు వేడి చేయండి. ప్రతీ నిమిషానికి ఉష్ణోగ్రతను నోట్ చేసి గ్రాఫ్ గీయండి.</p>
+                    <p class="text-sm bg-blue-50 p-3 rounded"><strong>Project Details:</strong> Plot temperature vs time. Notice flat lines during melting (0°C) and boiling (100°C) where heat is utilized as latent heat without temperature change.<br><strong>తెలుగు వివరణ:</strong> ఉష్ణోగ్రత కాల గ్రాఫ్ గీయాలి. మంచు కరిగేటప్పుడు (0°C) మరియు నీరు మరిగేటప్పుడు (100°C) ఉష్ణోగ్రత స్థిరంగా ఉంటుందని గమనించవచ్చు.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition z-40">
+        ↑ Top
+    </button>
+
+    <!-- SCRIPT FOR TRACKING & TIMER -->
+    <script>
+        let startTime = Date.now();
+        let timerInterval;
+
+        document.getElementById('visitorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('visitorName').value;
+            const roll = document.getElementById('visitorRoll').value;
+            if(name && roll) {
+                document.getElementById('visitorModal').style.display = 'none';
+                startTimer();
+            }
+        });
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                let elapsed = Math.floor((Date.now() - startTime) / 1000);
+                let mins = String(Math.floor(elapsed / 60)).padStart(2, '0');
+                let secs = String(elapsed % 60).padStart(2, '0');
+                document.getElementById('sessionTimer').innerText = `Time Spent: ${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function sendReport() {
+            const name = document.getElementById('visitorName').value || "Unknown Student";
+            const roll = document.getElementById('visitorRoll').value || "N/A";
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const subject = encodeURIComponent("Study Report - Heat Chapter");
+            const body = encodeURIComponent(`Student Name: ${name}\nRoll Number: ${roll}\nTotal Study Time: ${elapsed} seconds.`);
+            window.location.href = `mailto:balaswamysm@gmail.com?subject=${subject}&body=${body}`;
+        }
+    </script>
+</body>
+</html>
